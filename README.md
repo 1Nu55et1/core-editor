@@ -11,6 +11,7 @@ Core es un editor de texto moderno, eficiente y extensible inspirado en editores
 - Búsqueda y reemplazo de texto
 - Deshacer y rehacer cambios
 - Personalizable y extensible (soporte futuro para plugins y temas)
+- Desarrollado completamente con la biblioteca estándar de Rust, sin dependencias externas
 
 ## Instalación
 
@@ -87,6 +88,8 @@ El proyecto está estructurado de la siguiente manera:
 - `src/ui/`: Módulos relacionados con la interfaz de usuario
 - `src/editor/`: Lógica del editor y manejo de buffers
 - `src/utils/`: Utilidades y funciones auxiliares
+
+Core Editor está desarrollado completamente utilizando la biblioteca estándar de Rust, lo que garantiza un rendimiento óptimo, seguridad de memoria y portabilidad sin depender de bibliotecas externas.
 
 Para contribuir al proyecto:
 
