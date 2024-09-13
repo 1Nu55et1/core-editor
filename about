@@ -1,0 +1,209 @@
+Core: Un editor de texto moderno, eficiente y extensible
+========================================================
+
+Core es un editor de texto inspirado en varios editores basados en consola y centrados en el teclado. Sus atajos de teclado están ligeramente basados en Vim, pero con mejoras y características únicas.
+
+Esta es una guía concisa para usar Core.
+
+Core consta de tres tipos diferentes de conjuntos de comandos:
+
+1) Comandos globales: Se pueden usar en cualquier lugar, en cualquier modo.
+2) Comandos específicos de modo: Son específicos de un modo determinado.
+3) Espacios de nombres: Comandos que se pueden invocar como entrada (después de) ciertos comandos.
+
+Los modos son de dos tipos:
+- Modo de comando: En este modo, un comando puede ir precedido de un número. Este número se llama parámetro y puede significar varias cosas para el comando.
+- Modo primitivo: En este tipo de modo, las teclas se envían directamente al manejador sin ningún tipo de análisis.
+
+Comandos globales
+-----------------
+
+- [alt][espacio]: Ir al siguiente cursor.
+- [alt]<movimiento>: Mover un movimiento dado.
+- [shift][espacio]: Volver al modo normal.
+- [ctrl]+p: Abrir el buscador de archivos.
+- [ctrl]+f: Buscar en el archivo actual.
+- [ctrl]+b: Alternar la barra lateral.
+
+Modos
+-----
+
+# Normal
+
+Este es el modo predeterminado. El modo normal proporciona varios comandos. Está destinado a realizar comandos que se invocan con frecuencia y comandos utilizados para cambiar de modo.
+
+Los siguientes comandos son válidos en el modo normal:
+
+NOTA: <número> significa repetir el comando <número> veces, a menos que se indique lo contrario.
+
+Movimiento básico:
+- <número>h : Ir a la izquierda
+- <número>j : Ir hacia abajo
+- <número>k : Ir hacia arriba
+- <número>l : Ir a la derecha
+- <número>J : Ir 15 líneas hacia abajo
+- <número>K : Ir 15 líneas hacia arriba
+- <número>H : Ir al inicio de la línea
+- <número>L : Ir al final de la línea
+- w : Ir a la siguiente palabra
+- b : Ir a la palabra anterior
+- e : Ir al final de la palabra actual
+
+Navegación:
+- <número>g : Ir a la línea <número>
+- g<movimiento> : Realizar <movimiento>
+- G : Ir al final del documento
+- <número>t<caracter> : Ir a la siguiente aparición de <caracter>
+- <número>f<caracter> : Ir a la aparición anterior de <caracter>
+- % : Ir al paréntesis, corchete o llave correspondiente
+
+Desplazamiento:
+- z<movimiento> : Desplazar <movimiento>
+- <número>z : Desplazar a la línea <número>
+- Z : Desplazar al cursor
+- zt : Desplazar la línea actual a la parte superior de la pantalla
+- zz : Centrar la línea actual en la pantalla
+- zb : Desplazar la línea actual a la parte inferior de la pantalla
+
+Gestión del cursor:
+- b : Ramificar el cursor
+- B : Eliminar el cursor actual
+- [espacio] : Ir al siguiente cursor
+- [ctrl]+d : Añadir un cursor en la siguiente línea
+- [ctrl]+u : Añadir un cursor en la línea anterior
+
+Edición:
+- i : Ir al modo de inserción
+- a : Ir al modo de inserción (anexar)
+- r<caracter> : Reemplazar el carácter actual con <caracter>
+- R : Ir al modo de reemplazo
+- x : Eliminar carácter
+- X : Retroceder carácter
+- d<movimiento> : Eliminar una selección dada (dada por <movimiento>)
+- y<movimiento> : Copiar una selección dada (dada por <movimiento>)
+- c<movimiento> : Cambiar una selección dada (eliminar e ir al modo de inserción)
+- o : Insertar una nueva línea debajo y entrar en modo de inserción
+- O : Insertar una nueva línea arriba y entrar en modo de inserción
+- ~ : Cambiar el carácter bajo el cursor por su contraparte (si tiene una).
+      Por ejemplo a -> A
+                  ( -> )
+                  / -> \
+- ; : Ir al modo de comando
+- . : Repetir el comando anterior
+- > : Indentar la línea actual
+- < : Desindentar la línea actual
+- = : Autoformatear la selección o línea actual
+
+# Inserción
+
+Insertar texto antes del cursor.
+
+# Reemplazo
+
+Reemplazar el texto bajo el cursor.
+
+# Comando
+
+El modo de comando es un modo donde puedes invocar comandos como en Vi(m). En este modo puedes, por ejemplo, establecer/desactivar opciones.
+
+Los siguientes comandos son válidos:
+
+- set <opción> : Establecer <opción>
+- unset <opción> : Desactivar <opción>
+- toggle <opción> : Alternar <opción>
+- get <opción> : Obtener el estado de <opción>
+- o <nombre_archivo> : Abrir <nombre_archivo> en un nuevo búfer
+- help : Abrir esta guía.
+- w <nombre_archivo> : Escribir el búfer en <nombre_archivo>
+- ls : Listar los búferes disponibles
+- b<número> : Cambiar al búfer <número>
+- bd : Eliminar el búfer actual
+- q : Salir de Core.
+- split : Dividir la ventana horizontalmente
+- vsplit : Dividir la ventana verticalmente
+- theme <nombre_tema> : Cambiar el tema del editor
+- plugin install <nombre_plugin> : Instalar un plugin (funcionalidad futura)
+- plugin remove <nombre_plugin> : Desinstalar un plugin (funcionalidad futura)
+- plugin list : Listar plugins instalados (funcionalidad futura)
+
+Existen las siguientes opciones:
+
+- highlight o hl : Resaltar el texto
+                   (útil para codificar)
+  predeterminado: activado
+- autoindent o ai : Indentar automáticamente
+                    nuevas líneas.
+  predeterminado: activado
+- line_marker o lm : Atenuar ligeramente el
+                     fondo de la línea actual
+  predeterminado: activado
+- line_numbers o ln : Mostrar números de línea
+  predeterminado: activado
+- wrap : Ajustar líneas largas
+  predeterminado: desactivado
+- tab_size : Establecer el tamaño de la tabulación
+  predeterminado: 4
+
+Para salir del modo de comando, presiona enter y se invocará el comando. Para salir del modo de comando sin invocar el comando, usa el comando habitual shift-espacio.
+
+Espacios de nombres
+-------------------
+
+Un espacio de nombres es un conjunto de comandos que no depende de ningún modo.
+
+# <movimiento>
+
+<número> significa repetir a menos que se indique lo contrario.
+
+- <número>h : Ir a la izquierda
+- <número>j : Ir hacia abajo
+- <número>k : Ir hacia arriba
+- <número>l : Ir a la derecha
+- <número>J : Ir 15 líneas hacia abajo
+- <número>K : Ir 15 líneas hacia arriba
+- <número>H : Ir al inicio de la línea
+- <número>L : Ir al final de la línea
+- <número>g : Ir a la línea <número>
+- G : Ir al final del documento
+- <número>t<caracter> : Ir a la siguiente aparición de <caracter>
+- <número>f<caracter> : Ir a la aparición anterior de <caracter>
+- w : Ir a la siguiente palabra
+- b : Ir a la palabra anterior
+- e : Ir al final de la palabra actual
+
+Consejos y trucos
+-----------------
+
+- gg : Ir al inicio del documento
+- dL : Eliminar el resto de la línea
+- dH : Eliminar desde el inicio de la línea hasta el cursor
+- dd : Eliminar la línea completa
+- yy : Copiar la línea completa
+- p : Pegar después del cursor
+- P : Pegar antes del cursor
+- u : Deshacer
+- Ctrl+r : Rehacer
+- /palabra : Buscar "palabra" hacia adelante
+- ?palabra : Buscar "palabra" hacia atrás
+- n : Ir a la siguiente coincidencia de búsqueda
+- N : Ir a la coincidencia de búsqueda anterior
+- :% s/viejo/nuevo/g : Reemplazar todas las ocurrencias de "viejo" por "nuevo" en todo el documento
+- [ctrl]+a : Incrementar el número bajo el cursor
+- [ctrl]+x : Decrementar el número bajo el cursor
+- gd : Ir a la definición (útil para programación)
+- gf : Ir al archivo bajo el cursor
+- [ctrl]+o : Volver a la posición anterior
+- [ctrl]+i : Ir a la posición siguiente
+
+Recuerda que la práctica hace al maestro. Cuanto más uses Core, más eficiente te volverás en la edición de texto.
+
+Personalización y extensibilidad
+--------------------------------
+
+Core está diseñado para ser altamente personalizable y extensible. En futuras actualizaciones, se incluirá soporte para plugins y temas, lo que te permitirá adaptar el editor a tus necesidades específicas y preferencias visuales.
+
+- Plugins: Podrás instalar plugins para añadir nuevas funcionalidades, lenguajes de programación, o integraciones con otras herramientas.
+- Temas: Personaliza la apariencia de Core con una variedad de temas predefinidos o crea el tuyo propio.
+- Configuración: Ajusta el comportamiento del editor mediante un archivo de configuración fácil de editar.
+
+Mantente atento a las próximas actualizaciones para aprovechar al máximo estas características de personalización y extensibilidad.

@@ -1,0 +1,101 @@
+TODO detallado para Core: Un editor de texto moderno, eficiente y extensible
+
+1. Funcionalidades de edición avanzada:
+   - [ ] Implementar navegación por palabras (w, b, e) en Buffer:
+     - Añadir métodos move_word_forward(), move_word_backward(), move_to_end_of_word()
+     - Actualizar TuiCore para manejar estos nuevos movimientos
+   - [ ] Añadir el comando `.` para repetir la última acción en main.rs:
+     - Crear una estructura LastAction para almacenar la última acción realizada
+     - Implementar la lógica para reproducir la acción almacenada
+   - [ ] Implementar el comando `~` para cambiar mayúsculas/minúsculas en Buffer:
+     - Añadir método toggle_case() en Buffer
+     - Manejar casos especiales como caracteres no alfabéticos
+   - [ ] Mejorar el comando `z` para desplazamiento en TuiCore:
+     - Implementar zt, zz, zb para posicionar la vista
+     - Añadir lógica de desplazamiento suave
+
+2. Optimización y rendimiento:
+   - [ ] Mejorar el redibujado parcial en TuiCore:
+     - Implementar un sistema de "dirty regions" en Buffer
+     - Actualizar draw_buffer() en TuiCore para redibujar solo las áreas modificadas
+   - [ ] Perfeccionar el comando `x` para eliminar caracteres en Buffer:
+     - Optimizar para manejar eficientemente líneas de diferentes longitudes
+     - Implementar lógica para unir líneas cuando sea necesario
+
+3. Corrección de errores:
+   - [ ] Solucionar el error cuando se usa `~` en una línea vacía en Buffer:
+     - Añadir comprobación de línea vacía en el método toggle_case()
+   - [ ] Arreglar el comportamiento del comando `z` en TuiCore:
+     - Revisar y corregir la lógica de desplazamiento
+   - [ ] Corregir el funcionamiento del comando `x` cuando las longitudes de línea difieren en Buffer:
+     - Implementar manejo de casos especiales para final de línea y líneas vacías
+
+4. Mejoras de usabilidad:
+   - [ ] Implementar la funcionalidad de múltiples cursores:
+     - Modificar la estructura Buffer para soportar múltiples posiciones de cursor
+     - Actualizar TuiCore para dibujar y manejar múltiples cursores
+   - [ ] Añadir soporte para macros en main.rs:
+     - Implementar sistema de grabación y reproducción de secuencias de comandos
+   - [ ] Implementar búsqueda incremental:
+     - Añadir método de búsqueda en Buffer
+     - Actualizar TuiCore para mostrar resultados de búsqueda en tiempo real
+
+5. Refactorización y organización del código:
+   - [ ] Organizar el código en módulos:
+     - Crear módulos separados para comandos, modos de edición, y utilidades
+     - Actualizar mod.rs para reflejar la nueva estructura de módulos
+   - [ ] Optimizar el rendimiento para archivos grandes:
+     - Implementar carga y edición perezosa de archivos en Buffer
+   - [ ] Implementar un sistema de plugins:
+     - Diseñar una API para plugins en lib.rs
+     - Añadir soporte para cargar plugins dinámicamente
+     - Actualizar Cargo.toml con las dependencias necesarias para el sistema de plugins
+
+6. Nuevas características:
+   - [ ] Añadir soporte para resaltado de sintaxis:
+     - Integrar una biblioteca de resaltado de sintaxis (ej. syntect)
+     - Implementar lógica en TuiCore para aplicar estilos de resaltado
+   - [ ] Implementar autocompletado básico:
+     - Añadir lógica de sugerencias en Buffer basada en el contenido del archivo
+     - Actualizar TuiCore para mostrar y navegar por las sugerencias
+   - [ ] Agregar un modo de visualización de diferencias (diff):
+     - Implementar algoritmo de diff en un nuevo módulo
+     - Actualizar TuiCore para mostrar diferencias resaltadas
+
+7. Interfaz de usuario:
+   - [ ] Implementar la interfaz de usuario según el diseño en layout.v1:
+     - Crear componentes para la barra de estado, números de línea, y área de edición
+     - Actualizar TuiCore para utilizar estos componentes
+   - [ ] Añadir soporte para colores y estilos en TuiCore:
+     - Expandir la enumeración Color y añadir soporte para estilos (negrita, subrayado, etc.)
+   - [ ] Crear una barra de estado en la parte inferior de la pantalla:
+     - Implementar una estructura StatusBar
+     - Actualizar TuiCore para dibujar y actualizar la barra de estado
+
+8. Documentación y pruebas:
+   - [ ] Crear una guía de usuario completa:
+     - Documentar todos los comandos y características en un archivo README.md
+   - [ ] Documentar la API para desarrolladores de plugins:
+     - Crear un archivo PLUGIN_API.md con la documentación detallada
+   - [ ] Aumentar la cobertura de pruebas unitarias:
+     - Añadir pruebas para Buffer, TuiCore, y los nuevos módulos
+   - [ ] Implementar pruebas de integración:
+     - Crear escenarios de prueba que simulen flujos de trabajo completos del editor
+
+9. Compatibilidad y portabilidad:
+   - [ ] Mejorar el soporte para diferentes codificaciones de archivos:
+     - Implementar detección y manejo de codificaciones en Buffer
+   - [ ] Optimizar la experiencia en diferentes sistemas operativos:
+     - Añadir código específico para cada plataforma en TuiCore cuando sea necesario
+     - Asegurar que todas las características funcionen en Windows, macOS y Linux
+
+10. Gestión de proyecto y versiones:
+    - [ ] Actualizar la versión en Cargo.toml:
+      - Incrementar la versión según las convenciones de versionado semántico
+    - [ ] Crear un archivo CHANGELOG.md:
+      - Documentar todos los cambios, correcciones y nuevas características por versión
+    - [ ] Implementar un sistema de configuración:
+      - Crear un archivo de configuración (ej. .core-config)
+      - Implementar la lógica para leer y aplicar la configuración del usuario
+
+Este TODO detallado proporciona una hoja de ruta completa para el desarrollo de Core, abordando todas las áreas clave del editor y asegurando un progreso estructurado y completo.

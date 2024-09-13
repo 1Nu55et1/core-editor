@@ -1,0 +1,14 @@
+[package]
+name = "core-editor"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[lib]
+name = "core_editor"
+path = "src/lib.rs"
+
+[[bin]]
+name = "core-editor"
+path = "src/main.rs"

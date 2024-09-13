@@ -1,0 +1,39 @@
+/target
+Cargo.lock
+
+# Archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de respaldo del editor
+*~
+*.swp
+*.swo
+
+# Archivos de configuración del IDE
+.vscode/
+.idea/
+
+# Archivos de compilación
+*.rs.bk
+
+# Archivos de documentación generados
+/doc/
+
+# Archivos de perfil
+*.profraw
+
+# Archivos de registro
+*.log
+
+# Archivos de caché
+.cargo/
+
+# Archivos de dependencias
+/vendor/
+
+# Archivos de salida de pruebas
+/tests/output/
+
+# Archivos de cobertura de código
+/coverage/
