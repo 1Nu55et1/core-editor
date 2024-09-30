@@ -97,5 +97,3 @@ TODO detallado para Core: Un editor de texto moderno, eficiente y extensible
     - [ ] Implementar un sistema de configuración:
       - Crear un archivo de configuración (ej. .core-config)
       - Implementar la lógica para leer y aplicar la configuración del usuario
-
-Este TODO detallado proporciona una hoja de ruta completa para el desarrollo de Core, abordando todas las áreas clave del editor y asegurando un progreso estructurado y completo.
